@@ -261,11 +261,11 @@ nav{
       <p class="sec-label ld fade">Material audiovisual</p>
       <h2 class="sec-titulo td fade">Trabajo en escena</h2>
       <div class="vgrid">
-        <div class="vc fade"><div class="vw"><iframe src="https://drive.google.com/file/d/1CiLRfrJdBTSd5wDboKsejt-cDelO5I14/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Femme Performance · 2025</p></div></div>
-        <div class="vc fade"><div class="vw"><iframe src="https://drive.google.com/file/d/1iERk1CoC5XR8LX0LaefndOD1sLsgLNuY/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Contemporáneo · 2025</p></div></div>
-        <div class="vc fade"><div class="vw"><iframe src="https://drive.google.com/file/d/1xO6_lxsb_9Bef5uIXndghSGRIXJMzkHO/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Coreografía · 2025</p></div></div>
-        <div class="vc fade"><div class="vw"><iframe src="https://drive.google.com/file/d/1STrgXTq_SejSUcVND95uLRhyhVSvFacP/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Street Dance · 2024</p></div></div>
-        <div class="vc fade"><div class="vw"><iframe src="https://drive.google.com/file/d/1JmLsvdlJiOw747EIjlbuvdLNTQnnWnrh/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Danza Clásica · 2023</p></div></div>
+        <div class="vc fade"><div class="vw" onclick="playVideo(this)"><div class="vw-overlay"><div class="vw-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><iframe src="https://drive.google.com/file/d/1CiLRfrJdBTSd5wDboKsejt-cDelO5I14/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Femme Performance · 2025</p></div></div>
+        <div class="vc fade"><div class="vw" onclick="playVideo(this)"><div class="vw-overlay"><div class="vw-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><iframe src="https://drive.google.com/file/d/1iERk1CoC5XR8LX0LaefndOD1sLsgLNuY/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Contemporáneo · 2025</p></div></div>
+        <div class="vc fade"><div class="vw" onclick="playVideo(this)"><div class="vw-overlay"><div class="vw-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><iframe src="https://drive.google.com/file/d/1xO6_lxsb_9Bef5uIXndghSGRIXJMzkHO/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Coreografía · 2025</p></div></div>
+        <div class="vc fade"><div class="vw" onclick="playVideo(this)"><div class="vw-overlay"><div class="vw-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><iframe src="https://drive.google.com/file/d/1STrgXTq_SejSUcVND95uLRhyhVSvFacP/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Street Dance · 2024</p></div></div>
+        <div class="vc fade"><div class="vw" onclick="playVideo(this)"><div class="vw-overlay"><div class="vw-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><iframe src="https://drive.google.com/file/d/1JmLsvdlJiOw747EIjlbuvdLNTQnnWnrh/preview" allow="autoplay" allowfullscreen></iframe></div><div class="vinfo"><p class="vdesc">Danza Clásica · 2023</p></div></div>
       </div>
     </div>
   </div>
@@ -335,6 +335,17 @@ nav{
 </div>
 
 <script>
+// Play video on click
+function playVideo(el) {
+  el.classList.add('playing');
+  // Reactivar iframe para que Drive responda
+  var iframe = el.querySelector('iframe');
+  var src = iframe.src;
+  if (!src.includes('autoplay=1')) {
+    iframe.src = src + (src.includes('?') ? '&' : '?') + 'autoplay=1';
+  }
+}
+
 // Ajustar top del paginas según altura real del nav (puede ser 1 o 2 filas en mobile)
 function fixNavHeight() {
   const nav = document.getElementById('mainnav');
